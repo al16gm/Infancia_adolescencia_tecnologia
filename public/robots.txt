@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lageneracionqueaprendio.com/sitemap.xml

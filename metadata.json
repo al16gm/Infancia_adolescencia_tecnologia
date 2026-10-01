@@ -1,0 +1,6 @@
+{
+  "name": "La generación que aprendió a preguntarle a una máquina",
+  "description": "Infancia, adolescencia y tecnología sin alarmismo ni ingenuidad. Evidencia, recursos y criterios editoriales para acompañar de los 6 a los 18 años.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
