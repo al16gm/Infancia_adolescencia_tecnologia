@@ -255,6 +255,34 @@ git push -u origin main
 
 ---
 
+## Publicar en GitHub Pages
+
+Este proyecto está 100% preparado para publicarse de forma gratuita mediante **GitHub Pages** y **GitHub Actions**:
+
+1. Haz **Push / Sync** de los cambios a la rama `main` de tu repositorio (`al16gm/Infancia_adolescencia_tecnologia`).
+2. En GitHub, ve a la pestaña **Settings** de tu repositorio.
+3. En el menú lateral izquierdo, haz clic en **Pages**.
+4. En el apartado **Build and deployment**:
+   * En **Source**, selecciona: **GitHub Actions**.
+5. Espera a que termine la ejecución del workflow automático (*Deploy to GitHub Pages* en la pestaña *Actions*).
+6. Una vez completado, accede a tu web publicada en:
+   
+   **https://al16gm.github.io/Infancia_adolescencia_tecnologia/**
+
+### Configuración opcional de Supabase en GitHub
+
+Para que el formulario de aviso del libro guarde los correos y comentarios directamente en tu base de datos de Supabase:
+
+1. Ve a **Settings** → **Secrets and variables** → **Actions**.
+2. En la pestaña **Secrets**, pulsa **New repository secret** y añade:
+   * `VITE_SUPABASE_URL`: la URL de tu proyecto Supabase (ej: `https://xyzcompany.supabase.co`).
+   * `VITE_SUPABASE_ANON_KEY`: tu clave pública `anon` de Supabase.
+3. El workflow de GitHub Actions inyectará automáticamente estas variables durante el comando `npm run build`.
+
+> **Nota:** Si no configuras Supabase, la web se publica y carga con total normalidad, y el formulario informará con un aviso elegante de que el servicio de recepción se encuentra en pausa técnica.
+
+---
+
 ## 10. Licencia y derechos
 
 © 2026 [AUTOR / RESPONSABLE]. Todos los derechos reservados.

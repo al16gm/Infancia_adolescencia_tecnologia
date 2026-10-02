@@ -65,7 +65,7 @@ export function BookInterestModal() {
               alt="Portada del libro"
               className="w-full h-full object-cover select-none"
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = '/book_cover.jpg';
+                (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover.jpg`;
               }}
             />
           </div>

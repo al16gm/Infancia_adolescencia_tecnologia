@@ -125,7 +125,7 @@ export function BookPage() {
                 referrerPolicy="no-referrer"
                 loading="eager"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = '/book_cover.jpg';
+                  (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover.jpg`;
                 }}
               />
             </div>

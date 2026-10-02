@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+// Usamos HashRouter para compatibilidad nativa con GitHub Pages sin errores 404 al recargar.
+// Para cambiar a BrowserRouter en el futuro (p. ej. con dominio propio o servidor SPA),
+// basta con sustituir HashRouter por BrowserRouter.
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { BookModalProvider } from './context/BookModalContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -40,7 +43,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <BookModalProvider>
         <ScrollToTop />
         <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1E1E1E]">
@@ -93,6 +96,6 @@ export default function App() {
           <BookInterestModal />
         </div>
       </BookModalProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

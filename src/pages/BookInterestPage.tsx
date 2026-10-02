@@ -69,7 +69,7 @@ export function BookInterestPage() {
                   className="w-full h-auto object-cover select-none block"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = '/book_cover.jpg';
+                    (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover.jpg`;
                   }}
                 />
               </div>
