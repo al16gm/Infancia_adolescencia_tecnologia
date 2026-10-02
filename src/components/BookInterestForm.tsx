@@ -58,14 +58,8 @@ export function BookInterestForm({ onSuccessCallback, className = '' }: BookInte
         </div>
 
         <p className="text-xs sm:text-sm text-[#57534E] leading-relaxed mb-4">
-          Tu comentario también nos ayuda a entender cómo se percibe el proyecto antes de publicarlo.
+          Hemos registrado tu dirección correctamente. Tu comentario nos ayuda enormemente a calibrar el proyecto antes del lanzamiento.
         </p>
-
-        {isDevMode && (
-          <div className="mb-5 p-3 text-xs bg-[#F4EFEA] border border-[#DDD5C7] rounded text-[#78716C]">
-            <strong>Nota de desarrollo:</strong> Registro simulado y guardado en almacenamiento local (Supabase no configurado en entorno).
-          </div>
-        )}
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <Link

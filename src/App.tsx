@@ -20,6 +20,7 @@ import { UpdatesIndexPage } from './pages/UpdatesIndexPage';
 import { UpdateDetailPage } from './pages/UpdateDetailPage';
 import { BookPage } from './pages/BookPage';
 import { BookInterestPage } from './pages/BookInterestPage';
+import { AdminSubmissionsPage } from './pages/AdminSubmissionsPage';
 import { MethodologyPage } from './pages/MethodologyPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -74,6 +75,8 @@ export default function App() {
               {/* El libro */}
               <Route path="/libro" element={<BookPage />} />
               <Route path="/libro/avisame" element={<BookInterestPage />} />
+              <Route path="/libro/registros" element={<AdminSubmissionsPage />} />
+              <Route path="/admin" element={<AdminSubmissionsPage />} />
 
               {/* Institucional y legal */}
               <Route path="/metodologia" element={<MethodologyPage />} />

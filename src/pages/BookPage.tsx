@@ -4,6 +4,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SeoHelmet } from '../components/SeoHelmet';
 import { useBookModal } from '../context/BookModalContext';
 import { BookOpen, CheckCircle, ArrowRight, Shield } from 'lucide-react';
+import bookCoverImg from '../assets/images/book_cover_front_1790888633952.jpg';
 
 export function BookPage() {
   const { openModal } = useBookModal();
@@ -118,11 +119,14 @@ export function BookPage() {
             {/* Book Frame */}
             <div className="relative rounded-md overflow-hidden border border-[#D6CEBE] bg-[#FFFFFF] shadow-2xl">
               <img
-                src="/book_cover.jpg"
-                alt="Portada del libro 'La generación que aprendió a preguntarle a una máquina' de Alejandro García Monteagudo"
+                src={bookCoverImg}
+                alt="Portada oficial del libro 'La generación que aprendió a preguntarle a una máquina' de Alejandro García Monteagudo"
                 className="w-full h-auto object-cover select-none block"
                 referrerPolicy="no-referrer"
                 loading="eager"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = '/book_cover.jpg';
+                }}
               />
             </div>
           </div>

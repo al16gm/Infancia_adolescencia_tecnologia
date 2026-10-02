@@ -1,4 +1,11 @@
-export type EvidenceLevel = 'robusta' | 'moderada' | 'emergente' | 'prudencial';
+export type {
+  EvidenceLevel,
+  SourceRole,
+  VerificationStatus,
+  EvidenceItem,
+} from '../data/evidence';
+
+export type { HelpResource } from '../data/helpResources';
 
 export interface Topic {
   slug: string;
@@ -19,34 +26,11 @@ export interface Topic {
     focus: string;
     description: string;
   }[];
-  evidenceIds: string[];
+  evidenceIds?: string[];
   bookChapter: string;
   lastReviewed: string;
   seoDescription: string;
   keyQuote?: string;
-}
-
-export interface Evidence {
-  id: string;
-  slug: string;
-  title: string;
-  authors: string;
-  year: number | string;
-  publisher: string;
-  url?: string;
-  doi?: string;
-  studyType: string; // e.g. "Metaanálisis", "Estudio longitudinal", "Revisión sistemática", "Encuesta representativa"
-  population: string;
-  ageRange: string;
-  sampleSize: string;
-  topics: string[]; // topic slugs
-  evidenceLevel: EvidenceLevel;
-  whatItStudied: string;
-  mainFindings: string;
-  limitations: string;
-  usedFor: string;
-  lastReviewed: string;
-  placeholder?: boolean;
 }
 
 export interface Update {
@@ -77,11 +61,11 @@ export interface HelpPhone {
   id: string;
   name: string;
   phone: string;
-  category: 'urgencia' | 'ciberseguridad' | 'menores' | 'educacion' | 'violencia';
+  category: string;
   badge: string;
   description: string;
   availability: string;
-  officialUrl?: string; // only real official domains, otherwise omitted
+  officialUrl?: string;
   highlight?: boolean;
 }
 

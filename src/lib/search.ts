@@ -1,12 +1,12 @@
 import { TOPICS } from '../data/topics';
-import { EVIDENCE_ITEMS } from '../data/evidence';
+import { evidence, EvidenceItem } from '../data/evidence';
 import { RESOURCES } from '../data/resources';
 import { UPDATES } from '../data/updates';
-import { Topic, Evidence, ResourceItem, Update } from '../types';
+import { Topic, ResourceItem, Update } from '../types';
 
 export interface SearchResults {
   topics: Topic[];
-  evidence: Evidence[];
+  evidence: EvidenceItem[];
   resources: ResourceItem[];
   updates: Update[];
   totalMatches: number;
@@ -33,7 +33,8 @@ export function searchAll(query: string): SearchResults {
 
   const terms = clean.split(/\s+/).filter(Boolean);
 
-  const matchesAny = (text: string) => {
+  const matchesAny = (text?: string) => {
+    if (!text) return false;
     const norm = normalize(text);
     return terms.some((term) => norm.includes(term));
   };
@@ -47,13 +48,17 @@ export function searchAll(query: string): SearchResults {
       t.recommendations.some(matchesAny)
   );
 
-  const matchedEvidence = EVIDENCE_ITEMS.filter(
+  const matchedEvidence = evidence.filter(
     (e) =>
       matchesAny(e.title) ||
+      matchesAny(e.authors.join(' ')) ||
       matchesAny(e.whatItStudied) ||
       matchesAny(e.mainFindings) ||
+      matchesAny(e.limitations) ||
       matchesAny(e.usedFor) ||
-      matchesAny(e.studyType)
+      matchesAny(e.studyType) ||
+      matchesAny(e.citation) ||
+      matchesAny(e.publisher)
   );
 
   const matchedResources = RESOURCES.filter(

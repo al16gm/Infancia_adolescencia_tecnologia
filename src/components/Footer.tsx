@@ -50,6 +50,11 @@ export function Footer() {
                   Estructura del libro
                 </Link>
               </li>
+              <li>
+                <Link to="/admin" className="hover:text-[#1C1917] transition-colors text-[11px] opacity-80 hover:opacity-100">
+                  Panel de interesados (Autor)
+                </Link>
+              </li>
             </ul>
           </div>
 

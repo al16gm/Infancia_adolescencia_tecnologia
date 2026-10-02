@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Topic } from '../types';
+import { getEvidenceByTopic } from '../data/evidence';
 
 interface TopicCardProps {
   topic: Topic;
@@ -10,6 +11,7 @@ interface TopicCardProps {
 
 export function TopicCard({ topic, index }: TopicCardProps) {
   const formattedIndex = String(index + 1).padStart(2, '0');
+  const evidenceCount = getEvidenceByTopic(topic.slug).length;
 
   return (
     <article className="group flex flex-col justify-between p-6 sm:p-7 bg-[#FFFFFF] border border-[#E7E2DA] rounded transition-all hover:border-[#C8BFB0] hover:shadow-xs">
@@ -36,7 +38,7 @@ export function TopicCard({ topic, index }: TopicCardProps) {
 
       <div className="pt-6 mt-6 border-t border-[#F2ECE1] flex items-center justify-between">
         <span className="text-xs text-[#8C827A]">
-          {topic.whatWeKnow.length} puntos de evidencia
+          {evidenceCount} fuentes documentales
         </span>
         <Link
           to={`/temas/${topic.slug}`}

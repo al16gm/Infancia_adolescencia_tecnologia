@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 import { useBookModal } from '../context/BookModalContext';
+import bookCoverImg from '../assets/images/book_cover_front_1790888633952.jpg';
 
 interface BookCTAProps {
   title?: string;
@@ -57,10 +58,13 @@ export function BookCTA({
       <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-6">
         <div className="shrink-0 w-28 sm:w-32 aspect-[2/3] rounded overflow-hidden shadow-lg border border-[#D6CEBE]">
           <img
-            src="/book_cover.jpg"
-            alt="Portada de La generación que aprendió a preguntarle a una máquina"
+            src={bookCoverImg}
+            alt="Portada oficial de La generación que aprendió a preguntarle a una máquina"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = '/book_cover.jpg';
+            }}
           />
         </div>
         <div className="text-left sm:max-w-md">

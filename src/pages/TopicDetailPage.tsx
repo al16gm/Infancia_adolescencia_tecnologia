@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { TOPICS } from '../data/topics';
-import { EVIDENCE_ITEMS } from '../data/evidence';
+import { getEvidenceByTopic } from '../data/evidence';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { KnownUnknownBlock } from '../components/KnownUnknownBlock';
 import { AgeBands } from '../components/AgeBands';
@@ -10,7 +10,7 @@ import { ShareButton } from '../components/ShareButton';
 import { LastReviewed } from '../components/LastReviewed';
 import { BookCTA } from '../components/BookCTA';
 import { SeoHelmet } from '../components/SeoHelmet';
-import { ArrowLeft, BookOpen, HelpCircle } from 'lucide-react';
+import { ArrowLeft, BookOpen, Layers } from 'lucide-react';
 
 export function TopicDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -20,10 +20,9 @@ export function TopicDetailPage() {
     return <Navigate to="/404" replace />;
   }
 
-  // Find related evidence
-  const relatedEvidence = EVIDENCE_ITEMS.filter((e) =>
-    e.topics.includes(topic.slug) || topic.evidenceIds.includes(e.id)
-  );
+  // Retrieve evidence dynamically from real evidence dataset by topic
+  const topicEvidence = getEvidenceByTopic(topic.slug);
+  const mainEvidence = topicEvidence.slice(0, 6);
 
   return (
     <div className="max-w-4xl mx-auto space-y-12">
@@ -143,28 +142,28 @@ export function TopicDetailPage() {
         </section>
       )}
 
-      {/* Related Evidence Cards */}
-      {relatedEvidence.length > 0 && (
+      {/* Evidencia principal (Requisito 14: entre 3 y 6 entradas y enlace a ver toda) */}
+      {mainEvidence.length > 0 && (
         <section className="pt-6 border-t border-[#E8E2D7]">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
             <div>
               <h2 className="text-xl font-serif font-medium text-[#1C1917]">
-                Evidencia bibliográfica relacionada
+                Evidencia principal
               </h2>
-              <p className="text-xs text-[#78716C]">
-                Fichas documentales que respaldan las conclusiones de este tema.
+              <p className="text-xs text-[#78716C] mt-0.5">
+                Fuentes documentales y estudios clave vinculados a este tema.
               </p>
             </div>
             <Link
-              to="/evidencia"
-              className="text-xs text-[#1E3A8A] font-medium hover:underline underline-offset-2 shrink-0"
+              to={`/evidencia?topic=${topic.slug}`}
+              className="text-xs text-[#1E3A8A] font-semibold hover:underline underline-offset-2 shrink-0"
             >
-              Ver todas las fuentes →
+              Ver toda la evidencia sobre este tema ({topicEvidence.length} fuentes) →
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {relatedEvidence.map((ev) => (
+            {mainEvidence.map((ev) => (
               <EvidenceCard key={ev.slug} evidence={ev} />
             ))}
           </div>
