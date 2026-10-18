@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { X, ShoppingBag } from 'lucide-react';
 import { useBookModal } from '../context/BookModalContext';
-import bookCoverImg from '../assets/images/book_cover_front_1790888633952.jpg';
+import bookCoverImg from '../assets/images/book_cover_front_1790888633952_v2.jpg';
 
 export function BookInterestModal() {
   const { isOpen, closeModal } = useBookModal();
@@ -65,7 +65,7 @@ export function BookInterestModal() {
               alt="Portada del libro"
               className="w-full h-full object-cover select-none"
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover.jpg`;
+                (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover_v2.jpg`;
               }}
             />
           </div>
