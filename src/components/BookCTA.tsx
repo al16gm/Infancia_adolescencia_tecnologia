@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen } from 'lucide-react';
 import { useBookModal } from '../context/BookModalContext';
-import bookCoverImg from '../assets/images/book_cover_front_1790888633952.jpg';
+import bookCoverImg from '../assets/images/book_cover_front_1790888633952_v2.jpg';
 
 interface BookCTAProps {
   title?: string;
@@ -63,7 +63,7 @@ export function BookCTA({
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover.jpg`;
+              (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover_v2.jpg`;
             }}
           />
         </div>
