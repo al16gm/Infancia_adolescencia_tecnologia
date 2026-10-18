@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SeoHelmet } from '../components/SeoHelmet';
 import { useBookModal } from '../context/BookModalContext';
 import { BookOpen, CheckCircle, ArrowRight, Shield } from 'lucide-react';
-import bookCoverImg from '../assets/images/book_cover_front_1790888633952.jpg';
+import bookCoverImg from '../assets/images/book_cover_front_1790888633952_v2.jpg';
 
 export function BookPage() {
   const { openModal } = useBookModal();
@@ -125,7 +125,7 @@ export function BookPage() {
                 referrerPolicy="no-referrer"
                 loading="eager"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover.jpg`;
+                  (e.currentTarget as HTMLImageElement).src = `${import.meta.env.BASE_URL}book_cover_v2.jpg`;
                 }}
               />
             </div>
